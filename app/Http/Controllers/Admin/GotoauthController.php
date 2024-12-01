@@ -14,7 +14,7 @@ class GotoauthController extends Controller
 {
     public function edit() {
         
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
         return view('admin.gotoauth.edit', compact('gotoauth'));
     }
 
@@ -27,7 +27,7 @@ class GotoauthController extends Controller
             'organizer_key' => 'required'
         ]);
         
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
 
         if (!$gotoauth) {
             $gotoauth = new Gotoauth();
@@ -45,7 +45,7 @@ class GotoauthController extends Controller
     public function getAccess() {
 
         //check if the credentials are setup
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
         if (!$gotoauth)  return redirect()->route('gotoauth.edit');
 
         // Build the authorization URL
@@ -58,7 +58,7 @@ class GotoauthController extends Controller
     public function refreshToken() {
 
         //check if the credentials are setup
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
         
         if (!$gotoauth)  return redirect()->route('gotoauth.edit');
 
@@ -94,7 +94,7 @@ class GotoauthController extends Controller
     public function OAuthCallback(Request $request) {
 
         //check if the credentials are setup
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
         if (!$gotoauth)  return redirect()->route('gotoauth.edit');
 
         define('CLIENT_ID', $gotoauth->client_id);

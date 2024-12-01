@@ -115,6 +115,9 @@
             @endif
                 </div>
                 <div class="card-footer text-center">
+                    <a href="{{route('webinar.register', $webinar->id)}}" class="btn btn-primary {{ ($webinar->webinarKey == '') ? 'disabled' : '' }} " {{ ($webinar->webinarKey == '')  ? 'disabled' : '' }}>
+                        Register User
+                    </a>
                 </div>
             </div>
         </div>
@@ -133,9 +136,7 @@
                     <p><strong>End Time:</strong> {{ date('F j, Y, g:i A', strtotime($webinar['endTime'])) }}</p>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{{route('webinar.register', $webinar->id)}}" class="btn btn-primary {{ ($webinar->webinarKey == '') ? 'disabled' : '' }} " {{ ($webinar->webinarKey == '')  ? 'disabled' : '' }}>
-                        Register User
-                    </a>
+                    
                 </div>
             </div>
         </div>

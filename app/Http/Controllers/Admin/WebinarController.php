@@ -23,7 +23,7 @@ class WebinarController extends Controller
 
     public function __construct()
     {
-        $gotoauth = Auth::user()->find(1)->gotoauth;
+        $gotoauth = Auth::user()->gotoauth;
         if ($gotoauth) {
             $this->GOTOWEBINAR_CLIENT_ID = $gotoauth->client_id;
             $this->GOTOWEBINAR_CLIENT_SECRET = $gotoauth->client_secret;
